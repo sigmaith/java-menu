@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import menu.domain.constants.Category;
 import menu.exception.CustomException;
 import menu.exception.ErrorMessage;
 
@@ -30,11 +29,12 @@ public class Coach {
     }
 
     public void getRecommendIn(List<Menu> menusInCategory) { //  코치가 이미 먹은 음식이 아닌지, 코치가 못먹는 음식이 아닌지
+        List<String> menus = menusInCategory.stream().map(Menu::getName).collect(Collectors.toList()); // 메뉴 이름
         while (true) {
-            List<String> menus = menusInCategory.stream().map(Menu::getName).collect(Collectors.toList()); // 메뉴 이름
-            Menu today = menusInCategory.stream().filter(menu -> menu.getName().equals(Randoms.shuffle(menus).get(0)))
+            String specificMenuName = Randoms.shuffle(menus).get(0);
+            Menu today = menusInCategory.stream().filter(menu -> menu.getName().equals(specificMenuName))
                     .findFirst() // 랜덤으로 고른 메뉴이름이랑 일치하는 메뉴
-                    .orElse(Menu.from(Category.western, "문제있음")); // 문제있음...
+                    .orElseThrow(() -> CustomException.from(ErrorMessage.NON_EXISTENT_MENU)); // 문제있음...
             if (!isProhibit(today) && !isDuplicated(today)) {
                 lunchMenus.add(today);
                 break;
