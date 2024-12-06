@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import menu.controller.dto.MenuInfo;
 import menu.domain.Coach;
 import menu.domain.Coaches;
+import menu.domain.Manager;
 import menu.domain.Menu;
 import menu.domain.constants.Category;
 import menu.domain.Menus;
@@ -28,6 +29,7 @@ public class LunchController {
     public void recommendLunchMenus() {
         Coaches coaches = getCoaches();
         getEachProhibitedMenus(coaches);
+        Manager manager = new Manager(coaches);
     }
 
     private Menus setMenus() {
