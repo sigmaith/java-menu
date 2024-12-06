@@ -3,8 +3,10 @@ package menu.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import menu.controller.dto.MenusByType;
+import menu.domain.Coaches;
 import menu.domain.constants.Category;
 import menu.domain.Menus;
 import menu.view.InputView;
@@ -21,6 +23,7 @@ public class LunchController {
 
     public void recommendLunchMenus() {
         Menus menus = setMenus();
+        Coaches coaches = getCoaches();
     }
 
     private Menus setMenus() {
@@ -35,10 +38,21 @@ public class LunchController {
 
     private Coaches getCoaches() {
         outputView.printStart();
-
+        return retry(inputView::getCoaches);
     }
 
     private List<String> convertStringToList(String input) {
         return Arrays.stream(input.split(", ", -1)).collect(Collectors.toList());
+    }
+
+
+    private static <T> T retry(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
