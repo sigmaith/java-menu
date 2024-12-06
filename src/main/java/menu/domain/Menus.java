@@ -11,7 +11,8 @@ import menu.exception.CustomException;
 import menu.exception.ErrorMessage;
 
 public class Menus {
-    private Map<String, Menu> menus = new HashMap<>();
+    private List<Menu> menus;
+    private Map<String, Menu> menuMapByName = new HashMap<>();
 
     public static Menus from(List<MenuInfo> menuInfos) {
         List<Menu> menus = new ArrayList<>();
@@ -24,14 +25,21 @@ public class Menus {
     }
 
     private Menus(List<Menu> menus) {
-        this.menus = menus.stream().collect(Collectors.toMap(Menu::getName, menu -> menu));
+        this.menus = menus;
+        this.menuMapByName = menus.stream().collect(Collectors.toMap(Menu::getName, menu -> menu));
     }
 
     public Menu getMenuBy(String menuName) {
-        Menu menu = menus.get(menuName);
+        Menu menu = menuMapByName.get(menuName);
         if (menu == null) {
             throw CustomException.from(ErrorMessage.NON_EXISTENT_MENU);
         }
         return menu;
+    }
+
+    public List<Menu> getMenusBy(Category category) {
+        return menus.stream()
+                .filter(menu -> menu.getCategory().equals(category))
+                .collect(Collectors.toList());
     }
 }

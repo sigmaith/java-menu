@@ -20,6 +20,10 @@ public class Menu {
         return name;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
