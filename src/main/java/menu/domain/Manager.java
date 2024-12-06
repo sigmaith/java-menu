@@ -2,7 +2,6 @@ package menu.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import menu.domain.constants.Category;
@@ -33,10 +32,14 @@ public class Manager {
     public void recommend() {
         // 코치에게 음식 추천할 때 고려할 것 : 그날의 음식 카테고리, 코치가 이미 먹은 음식이 아닌지, 코치가 못먹는 음식이 아닌지
         // Randoms.shuffle(List<String>(음식 이름들)) -> 그날의 음식 카테고리.
-        for (Category category: categories) { // 그날의 음식 카테고리
-            for (Coach coach: coaches.getCoaches()) {
+        for (Category category : categories) { // 그날의 음식 카테고리
+            for (Coach coach : coaches.getCoaches()) {
                 coach.getRecommendIn(menus.getMenusBy(category));
             }
         }
+    }
+
+    public List<String> getCategoryNames() {
+        return categories.stream().map(Category::getName).collect(Collectors.toList());
     }
 }

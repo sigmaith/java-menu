@@ -10,8 +10,8 @@ import menu.exception.ErrorMessage;
 
 public class Coach {
     private final String name;
-    private List<Menu> prohibit = null;
-    private List<Menu> lunchMenus = null;
+    private List<Menu> prohibit;
+    private List<Menu> lunchMenus;
 
     public Coach(String name) {
         if (name.length() < 2 || name.length() > 4) {
@@ -40,6 +40,10 @@ public class Coach {
                 break;
             }
         }
+    }
+
+    public List<String> getLunchMenuNames() {
+        return lunchMenus.stream().map(Menu::getName).collect(Collectors.toList());
     }
 
     private boolean isProhibit(Menu menu) {

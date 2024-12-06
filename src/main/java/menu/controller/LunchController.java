@@ -31,6 +31,7 @@ public class LunchController {
         getEachProhibitedMenus(coaches);
         Manager manager = new Manager(coaches, menus);
         manager.recommend();
+        outputView.printLunchMenus(manager, coaches);
     }
 
     private Menus setMenus() {
