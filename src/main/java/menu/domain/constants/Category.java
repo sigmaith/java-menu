@@ -1,4 +1,4 @@
-package menu.menu.domain.constants;
+package menu.domain.constants;
 
 public enum Category {
     japan, korean, chinese, asian, western

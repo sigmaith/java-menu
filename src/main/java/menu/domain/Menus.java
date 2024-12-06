@@ -1,10 +1,9 @@
-package menu.menu.domain.constants;
+package menu.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import menu.controller.dto.MenusByType;
+import menu.domain.constants.Category;
 
 public class Menus {
     private List<Menu> menus = new ArrayList<>();

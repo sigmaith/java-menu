@@ -1,7 +1,7 @@
 package menu.controller.dto;
 
 import java.util.List;
-import menu.menu.domain.constants.Category;
+import menu.domain.constants.Category;
 
 public class MenusByType {
     private Category category;

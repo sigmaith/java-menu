@@ -1,4 +1,6 @@
-package menu.menu.domain.constants;
+package menu.domain;
+
+import menu.domain.constants.Category;
 
 public class Menu {
     private final Category category;

@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import menu.controller.dto.MenusByType;
-import menu.menu.domain.constants.Category;
-import menu.menu.domain.constants.Menus;
+import menu.domain.constants.Category;
+import menu.domain.Menus;
 import menu.view.InputView;
 import menu.view.OutputView;
 
