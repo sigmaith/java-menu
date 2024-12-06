@@ -32,6 +32,7 @@ public class LunchController {
         Manager manager = new Manager(coaches, menus);
         manager.recommend();
         outputView.printLunchMenus(manager, coaches);
+        outputView.printTermination();
     }
 
     private Menus setMenus() {

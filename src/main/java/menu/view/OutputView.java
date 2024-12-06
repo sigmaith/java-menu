@@ -23,4 +23,8 @@ public class OutputView {
                     lunchMenuNames.get(1), lunchMenuNames.get(2), lunchMenuNames.get(3), lunchMenuNames.get(4));
         }
     }
+
+    public void printTermination() {
+        System.out.println("추천을 완료했습니다.");
+    }
 }
