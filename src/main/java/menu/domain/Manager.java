@@ -16,11 +16,11 @@ public class Manager {
         this.menus = menus;
         categories = new ArrayList<>();
         int[] record = new int[]{0, 0, 0, 0, 0};
-        int idx = Randoms.pickNumberInRange(0, 4);
+        int idx = Randoms.pickNumberInRange(1, 5) - 1;
         record[idx] = 1;
         categories.add(Category.from(idx)); // 월요일 카테고리
         while (categories.size() < 5) {
-            idx = Randoms.pickNumberInRange(0, 4);
+            idx = Randoms.pickNumberInRange(1, 5) - 1;
             if (record[idx] >= 2) {
                 continue;
             }
