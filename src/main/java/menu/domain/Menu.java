@@ -1,5 +1,6 @@
 package menu.domain;
 
+import java.util.Objects;
 import menu.domain.constants.Category;
 
 public class Menu {
@@ -13,5 +14,26 @@ public class Menu {
     private Menu(Category category, String name) {
         this.category = category;
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Menu))
+            return false;
+        Menu menu = (Menu)o;
+        return category == menu.category &&
+                Objects.equals(name, menu.name);
+    }
+
+    // hashcode 재정의
+    @Override
+    public int hashCode() {
+        return Objects.hash(category, name);
     }
 }

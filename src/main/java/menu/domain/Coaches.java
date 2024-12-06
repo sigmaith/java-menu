@@ -15,13 +15,17 @@ public class Coaches {
         return new Coaches(coaches);
     }
 
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
+
     private Coaches(List<Coach> coaches) {
         this.coaches = coaches;
     }
 
     private static void validateLengthOf(List<String> names) {
         if (names.size() < 2 || names.size() > 5) {
-            throw CustomException.from(ErrorMessage.NUMBER_OF_COACHES_EXCEPTION);
+            throw CustomException.from(ErrorMessage.NUMBER_OF_COACHES);
         }
     }
 }
